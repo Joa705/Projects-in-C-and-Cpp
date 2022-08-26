@@ -1,3 +1,0 @@
-C:/Users/jpalb/Algorithms and Datastructure/projects/Maze/cmake-build-debug/CMakeFiles/Maze.dir
-C:/Users/jpalb/Algorithms and Datastructure/projects/Maze/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/jpalb/Algorithms and Datastructure/projects/Maze/cmake-build-debug/CMakeFiles/rebuild_cache.dir

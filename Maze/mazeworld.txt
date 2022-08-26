@@ -1,6 +1,0 @@
-w,w,w,w,w,w,w,w,w
-w,w,w,z,z,w,w,w,w
-w,w,z,z,w,w,w,w,w
-w,w,w,w,w,w,z,w,w
-w,w,w,w,z,z,z,w,w
-
