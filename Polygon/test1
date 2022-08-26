@@ -1,0 +1,245 @@
+#include <iostream>
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
+#include "stack.h"
+#include "list.h"
+using namespace std;
+
+
+//Functions
+float line_function_x(float x);
+float line_function_y(float y);
+
+
+int main()
+{
+
+    node *head = NULL;
+    node *last = NULL;
+
+    // Game lines.
+    sf::Vertex line[] =
+            {       //Horizontal
+                    sf::Vertex(sf::Vector2f(0,100)),
+                    sf::Vertex(sf::Vector2f(800,100)),
+
+                    sf::Vertex(sf::Vector2f(0,200)),
+                    sf::Vertex(sf::Vector2f(800,200)),
+
+                    sf::Vertex(sf::Vector2f(0,300)),
+                    sf::Vertex(sf::Vector2f(800,300)),
+
+                    sf::Vertex(sf::Vector2f(0,400)),
+                    sf::Vertex(sf::Vector2f(800,400)),
+
+                    sf::Vertex(sf::Vector2f(0,500)),
+                    sf::Vertex(sf::Vector2f(800,500)),
+
+                    //Vertical
+                    sf::Vertex(sf::Vector2f(100,0)),
+                    sf::Vertex(sf::Vector2f(100,600)),
+
+                    sf::Vertex(sf::Vector2f(200,0)),
+                    sf::Vertex(sf::Vector2f(200,600)),
+
+                    sf::Vertex(sf::Vector2f(300,0)),
+                    sf::Vertex(sf::Vector2f(300,600)),
+
+                    sf::Vertex(sf::Vector2f(400,0)),
+                    sf::Vertex(sf::Vector2f(400,600)),
+
+                    sf::Vertex(sf::Vector2f(500,0)),
+                    sf::Vertex(sf::Vector2f(500,600)),
+
+                    sf::Vertex(sf::Vector2f(600,0)),
+                    sf::Vertex(sf::Vector2f(600,600)),
+
+                    sf::Vertex(sf::Vector2f(700,0)),
+                    sf::Vertex(sf::Vector2f(700,600)),
+
+
+            };
+
+
+    int x1 = 0;
+    int y1 = 0;
+
+    int x2 = 0;
+    int y2 = 0;
+
+    int x3;
+    int y3;
+
+    int x22;
+    int y22;
+
+    int x33;
+    int y33;
+
+    int x_final;
+    int y_final;
+
+    int positions = 0;
+    int line_count = 0;
+
+
+    // Create the main window
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Polygon Game");
+
+
+    // Start the game loop
+    while (window.isOpen())
+    {
+        sf::Vertex main_line[] =
+                {
+                        sf::Vertex(sf::Vector2f(x1,y1), sf::Color::Red),
+                        sf::Vertex(sf::Vector2f(x2,y2), sf::Color::Red),
+                        sf::Vertex(sf::Vector2f(x22,y22), sf::Color::Red),
+                        sf::Vertex(sf::Vector2f(x3,y3), sf::Color::Red),
+                        sf::Vertex(sf::Vector2f(x33,y33), sf::Color::Red),
+                        sf::Vertex(sf::Vector2f(x_final,y_final), sf::Color::Red)
+
+
+                };
+
+        // Event handler
+        sf::Event event;
+
+        while ((window.pollEvent(event)))
+        {
+          // check for events
+          switch (event.type)
+          {
+              // window closed
+              case sf::Event::Closed:
+                  window.close();
+                  break;
+
+
+                  //Mouse button pressed
+              case sf::Event::MouseButtonPressed:
+                  switch (event.key.code)
+                  {
+                      case sf::Mouse::Left:
+                          cout << "left key has been pressed\n";
+                          positions += 1;
+                          line_count = 0;
+                          if(positions == 1)
+                          {
+                              int pos_x = sf::Mouse::getPosition(window).x;
+                              int pos_y = sf::Mouse::getPosition(window).y;
+                              cout << "x: " << pos_x << endl;
+                              cout << "y: " << pos_y << endl;
+                              x1 = line_function_x((float)pos_x);
+                              y1 = line_function_y((float)pos_y);
+                              line_count += 2;
+
+                          }
+                          else if(positions == 2)
+                          {
+                              int pos_x = sf::Mouse::getPosition(window).x;
+                              int pos_y = sf::Mouse::getPosition(window).y;
+                              cout << "x: " << pos_x << endl;
+                              cout << "y: " << pos_y << endl;
+                              x2 = line_function_x((float)pos_x);
+                              y2 = line_function_y((float)pos_y);
+                              x22 = x2;
+                              y22 = y2;
+                              line_count += 4;
+                          }
+                          else if(positions == 3)
+                          {
+                              int pos_x = sf::Mouse::getPosition(window).x;
+                              int pos_y = sf::Mouse::getPosition(window).y;
+                              cout << "x: " << pos_x << endl;
+                              cout << "y: " << pos_y << endl;
+                              x3 = line_function_x((float)pos_x);
+                              y3 = line_function_y((float)pos_y);
+                              x33 = x3;
+                              y33 = y3;
+                              x_final = x1;
+                              y_final = y1;
+                              positions = 0;
+                              line_count += 8;
+                          }
+                          break;
+
+                      case sf::Mouse::Right:
+                          cout << "right key has been pressed\n";
+                          break;
+                  }
+
+
+              case sf::Event::MouseMoved:
+                  if(positions == 1)
+                  {
+                      x2 = event.mouseMove.x;
+                      y2 = event.mouseMove.y;
+
+                  }
+                  if(positions == 2)
+                  {
+                      x3 = event.mouseMove.x;
+                      y3 = event.mouseMove.y;
+
+                  }
+                  break;
+          }
+
+
+        }
+
+        // Clear screen
+        window.clear();
+
+        //Draw shape on screen
+        window.draw(line, 24, sf::Lines);
+
+        //Draw shape on screen
+        window.draw(main_line, line_count, sf::Lines);
+
+
+        // Update the window
+        window.display();
+    }
+    return 0;
+}
+
+
+
+
+
+// X Positon line
+float line_function_x(float x)
+{
+    float xval = 0;
+
+    for (int i = 100; i <= 800; i+=100) {
+        if(x > xval && x <= (float)i)
+        {
+            x = (float)i - 50;
+
+        }
+        xval += 100;
+    }
+
+    return x;
+
+
+}
+// Y Position line
+float line_function_y(float y)
+{
+    float yval = 0;
+
+    for (int j = 100; j < 600; j+=100) {
+        if(y > yval && y <= (float)j)
+        {
+            y = (float)j - 50;
+        }
+        yval += 100;
+
+    }
+    return y;
+}
+

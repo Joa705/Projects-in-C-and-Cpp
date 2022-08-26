@@ -1,0 +1,3 @@
+C:\Users\jpalb\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\212.5284.51\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\Polygon.dir/objects.a
+C:\mingw64\bin\ar.exe cr CMakeFiles\Polygon.dir/objects.a @CMakeFiles\Polygon.dir\objects1.rsp
+C:\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\Polygon.dir/objects.a -Wl,--no-whole-archive -o Polygon.exe -Wl,--out-implib,libPolygon.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Polygon.dir\linklibs.rsp

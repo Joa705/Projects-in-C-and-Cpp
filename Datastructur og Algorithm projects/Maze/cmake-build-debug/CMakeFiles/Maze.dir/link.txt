@@ -1,0 +1,3 @@
+C:\Users\jpalb\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\212.5457.51\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\Maze.dir/objects.a
+C:\mingw64\bin\ar.exe cr CMakeFiles\Maze.dir/objects.a @CMakeFiles\Maze.dir\objects1.rsp
+C:\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\Maze.dir/objects.a -Wl,--no-whole-archive -o Maze.exe -Wl,--out-implib,libMaze.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Maze.dir\linklibs.rsp
