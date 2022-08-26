@@ -1,3 +1,0 @@
-C:/Users/jpalb/Algorithms and Datastructure/projects/project_1/cmake-build-debug/CMakeFiles/project_1.dir
-C:/Users/jpalb/Algorithms and Datastructure/projects/project_1/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/jpalb/Algorithms and Datastructure/projects/project_1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
